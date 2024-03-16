@@ -54,7 +54,7 @@ Qaterial.Pane
     onPrimary: root.onPrimary
     enabled: root.enabled
     radius: root.radius
-    color: root.backgroundColor
+    // color: root.backgroundColor
     borderColor: root.borderColor
     outlined: root.outlined
     elevation: root.elevation
