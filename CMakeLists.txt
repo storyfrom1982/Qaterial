@@ -89,7 +89,7 @@ endif()
 
 # ───── QT DEPENDENCIES ─────
 
-find_package(Qt6 6.6 REQUIRED COMPONENTS
+find_package(Qt6 6.7 REQUIRED COMPONENTS
   Core
   Gui
   Qml
@@ -99,7 +99,7 @@ find_package(Qt6 6.6 REQUIRED COMPONENTS
   Xml
 )
 
-qt_standard_project_setup(REQUIRES 6.6)
+qt_standard_project_setup(REQUIRES 6.7)
 
 # ───── FETCH DEPENDENCIES ─────
 

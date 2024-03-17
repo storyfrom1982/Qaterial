@@ -82,7 +82,7 @@ static void Qaterial_registerTypes()
     qaterial::FolderTreeModel::registerToQml(*_uri, _major, _minor);
 
     qmlRegisterAnonymousType<qaterial::LayoutAttached>(*_uri, _major);
-    qaterial::Layout::registerToQml();
+    // qaterial::Layout::registerToQml();
 }
 
 static void Qaterial_registerTypes(const char* uri, const quint8 major, const quint8 minor)
