@@ -127,7 +127,8 @@ static void Qaterial_loadResources(bool autoRegisterStyle)
 
     // Force load qrc resources
     // This is mandatory when used as a static library
-    Q_INIT_RESOURCE(Qaterial);
+    //fixme kly
+    // Q_INIT_RESOURCE(Qaterial);
     Q_INIT_RESOURCE(QaterialFonts);
     Q_INIT_RESOURCE(QaterialIcons);
 

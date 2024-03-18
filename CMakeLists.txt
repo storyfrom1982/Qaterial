@@ -103,6 +103,7 @@ qt_standard_project_setup(REQUIRES 6.7)
 
 # ───── FETCH DEPENDENCIES ─────
 
+# fixme kly
 # include(cmake/FetchQOlm.cmake)
 # include(cmake/FetchQtGeneratorCMake.cmake)
 add_subdirectory(dep)
@@ -180,6 +181,13 @@ set(QATERIAL_SRCS ${QATERIAL_SRCS} ${QATERIAL_GEN_SRCS})
 
 # ───── QATERIAL TARGET ─────
 
+file(GLOB QML_PATHS "${CMAKE_CURRENT_SOURCE_DIR}/qml/Qaterial/*.qml")
+foreach(filepath ${QML_PATHS})
+    string(REPLACE "${CMAKE_CURRENT_SOURCE_DIR}/" "" filename ${filepath})
+    # message(STATUS "------ ${filepath} ------ ${filename}")
+    list(APPEND QATERIAL_QMLS ${filename})
+endforeach(filepath)
+
 if(${QATERIAL_BUILD_SHARED})
   add_library(${QATERIAL_TARGET} SHARED ${QATERIAL_SRCS})
   target_compile_definitions(${QATERIAL_TARGET} PRIVATE -DQATERIAL_SHARED)
@@ -189,9 +197,43 @@ else()
 endif()
 add_library(${QATERIAL_TARGET}::${QATERIAL_TARGET} ALIAS ${QATERIAL_TARGET})
 
+set_source_files_properties(
+    qml/Qaterial/Style.qml
+    qml/Qaterial/Colors.qml
+    PROPERTIES
+    QT_QML_SINGLETON_TYPE TRUE
+)
+
+qt_add_qml_module(${QATERIAL_TARGET}
+    URI ${QATERIAL_TARGET}
+    VERSION 1.0
+    RESOURCE_PREFIX "/qt/qml"
+
+    SOURCES
+        ${QATERIAL_SRCS}
+        ${QATERIAL_GEN_SRCS}
+
+    QML_FILES
+        ${QATERIAL_QMLS}
+        # qml/Qaterial/Page.qml
+        # qml/Qaterial/Pane.qml
+        # qml/Qaterial/Style.qml
+        # qml/Qaterial/Colors.qml
+        # qml/Qaterial/Label.qml qml/Qaterial/LabelBody1.qml qml/Qaterial/LabelBody2.qml qml/Qaterial/LabelButton.qml qml/Qaterial/LabelCaption.qml qml/Qaterial/LabelHeadline1.qml qml/Qaterial/LabelHeadline2.qml qml/Qaterial/LabelHeadline3.qml qml/Qaterial/LabelHeadline4.qml qml/Qaterial/LabelHeadline5.qml qml/Qaterial/LabelHeadline6.qml qml/Qaterial/LabelHint1.qml qml/Qaterial/LabelHint2.qml qml/Qaterial/LabelOverline.qml qml/Qaterial/LabelSubtitle1.qml qml/Qaterial/LabelSubtitle2.qml qml/Qaterial/LabelWithCaption.qml
+        # qml/Qaterial/RawMaterialButton.qml qml/Qaterial/Icon.qml qml/Qaterial/IconLabel.qml qml/Qaterial/ElevationEffect.qml
+        # qml/Qaterial/DebugObject.qml qml/Qaterial/DebugRectangle.qml qml/Qaterial/Ripple.qml
+        # qml/Qaterial/TextField.qml qml/Qaterial/TextFieldButtonContainer.qml qml/Qaterial/TextFieldClearButton.qml qml/Qaterial/TextFieldCopyButton.qml qml/Qaterial/ErrorSequentialAnimation.qml
+        # qml/Qaterial/PlaceholderText.qml qml/Qaterial/ColorIcon.qml qml/Qaterial/CursorDelegate.qml
+        # qml/Qaterial/TextArea.qml qml/Qaterial/TextAreaContent.qml qml/Qaterial/TextAreaScrollBar.qml qml/Qaterial/TextAreaScrollView.qml qml/Qaterial/ComboBox.qml
+        # qml/Qaterial/TextFieldDelegate.qml qml/Qaterial/TextFieldIcon.qml qml/Qaterial/TextFieldIconButton.qml qml/Qaterial/TextFieldPasswordButton.qml
+        # qml/Qaterial/AppBarButton.qml qml/Qaterial/RoundButton.qml
+)
+
 target_compile_features(${QATERIAL_TARGET} PUBLIC cxx_std_17)
 target_include_directories(${QATERIAL_TARGET} PRIVATE src ${QATERIAL_ICONS_OUTPUT_FOLDER})
 target_include_directories(${QATERIAL_TARGET} PUBLIC
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src/Qaterial/Layout>
+  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src/Qaterial/Theme>
   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/src>
   $<INSTALL_INTERFACE:include>
 )

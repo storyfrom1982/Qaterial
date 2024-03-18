@@ -21,6 +21,8 @@ Container
   contentItem: ListView
   {
     id: list
+    // fixme kly
+    implicitHeight: Math.max(contentHeight, 1)
     model: _container.contentModel
     snapMode: ListView.SnapOneItem
     orientation: ListView.Horizontal

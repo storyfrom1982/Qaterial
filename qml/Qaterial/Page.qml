@@ -25,14 +25,16 @@ T.Page
     (implicitHeaderHeight > 0 ? implicitHeaderHeight + spacing : 0) +
     (implicitFooterHeight > 0 ? implicitFooterHeight + spacing : 0))
 
-  palette.base: Qaterial.Style.colorTheme.background0
+  // fixme kly
+  // palette.base: Qaterial.Style.colorTheme.background0
 
   // Warning: Support old API
   // This property is DEPRECATED
-  property alias backgroundColor: root.palette.base
+  property alias backgroundColor: bg.color
 
   background: Rectangle
   {
-    color: root.palette.base
+    id: bg
+    color: Qaterial.Style.colorTheme.background0
   } // Rectangle
 } // Page
