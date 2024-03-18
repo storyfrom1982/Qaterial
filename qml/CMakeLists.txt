@@ -25,4 +25,4 @@ add_subdirectory(Qaterial/Fonts)
 # Generate Qaterial::Icons
 add_subdirectory(Qaterial/Icons)
 # Generate Qaterial::Components
-add_subdirectory(Qaterial)
+# add_subdirectory(Qaterial)

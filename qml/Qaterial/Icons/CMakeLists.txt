@@ -26,7 +26,8 @@
 if(QATERIAL_ENABLE_ICONS)
 
   # Download svgs icons
-  include(${PROJECT_SOURCE_DIR}/cmake/FetchMaterialDesignIcons.cmake)
+  # fixme kly
+  # include(${PROJECT_SOURCE_DIR}/cmake/FetchMaterialDesignIcons.cmake)
 
   # Generate qrc to embed svgs files
   message(STATUS "Generate QaterialIcons.qrc")

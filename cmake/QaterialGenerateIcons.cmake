@@ -186,7 +186,8 @@ function(qaterial_generate_icons_class OUTPUT_FILE_HPP OUTPUT_FILE_CPP)
   if(QATERIAL_ENABLE_ICONS)
 
     # Download svgs icons
-    include(${PROJECT_SOURCE_DIR}/cmake/FetchMaterialDesignIcons.cmake)
+    # fixme kly
+    # include(${PROJECT_SOURCE_DIR}/cmake/FetchMaterialDesignIcons.cmake)
 
     message(STATUS "Generate Qaterial/Icons.hpp")
     _qaterial_generate_icons_class(QATERIAL_ICONS_HPP QATERIAL_ICONS_CPP

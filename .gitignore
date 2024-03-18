@@ -11,3 +11,7 @@ CMakeLists.txt.user
 
 # CPM cache
 .cpm
+
+dep/QOlm
+dep/MaterialDesignSvgo
+dep/QtGeneratorCMake

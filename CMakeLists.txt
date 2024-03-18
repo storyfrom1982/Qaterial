@@ -20,7 +20,7 @@
 # OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 # SOFTWARE.
 
-cmake_minimum_required(VERSION 3.15.0 FATAL_ERROR)
+cmake_minimum_required(VERSION 3.16)
 
 set(QATERIAL_MAIN_PROJECT OFF)
 if (CMAKE_CURRENT_SOURCE_DIR STREQUAL CMAKE_SOURCE_DIR)
@@ -89,7 +89,7 @@ endif()
 
 # ───── QT DEPENDENCIES ─────
 
-find_package(Qt5 REQUIRED COMPONENTS
+find_package(Qt6 REQUIRED COMPONENTS
   Core
   Gui
   Qml
@@ -97,13 +97,15 @@ find_package(Qt5 REQUIRED COMPONENTS
   QuickControls2
   Svg
   Xml
-  QuickCompiler
 )
+
+qt_standard_project_setup(REQUIRES 6.7)
 
 # ───── FETCH DEPENDENCIES ─────
 
-include(cmake/FetchQOlm.cmake)
-include(cmake/FetchQtGeneratorCMake.cmake)
+# include(cmake/FetchQOlm.cmake)
+# include(cmake/FetchQtGeneratorCMake.cmake)
+add_subdirectory(dep)
 
 # ───── RESSOURCES ─────
 
@@ -200,7 +202,7 @@ endif()
 target_link_libraries(${QATERIAL_TARGET} PRIVATE
   ${QATERIAL_TARGET}::Icons
   ${QATERIAL_TARGET}::Fonts
-  ${QATERIAL_TARGET}::Components
+  # ${QATERIAL_TARGET}::Components
   QOlm::QOlm
   Qt::Core
   Qt::Gui
@@ -232,7 +234,7 @@ if(QATERIAL_FOLDER_PREFIX)
 endif()
 
 # Correctly link to static qt
-get_target_property(QT_TARGET_TYPE Qt5::Core TYPE)
+get_target_property(QT_TARGET_TYPE Qt6::Core TYPE)
 if(NOT QATERIAL_ENABLE_INSTALL AND ${QT_TARGET_TYPE} STREQUAL "STATIC_LIBRARY")
   include(${PROJECT_SOURCE_DIR}/cmake/FetchQtStaticCMake.cmake)
   qt_generate_qml_plugin_import(${QATERIAL_TARGET} QML_SRC ${CMAKE_CURRENT_SOURCE_DIR}/qml)
