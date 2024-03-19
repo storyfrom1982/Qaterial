@@ -4,8 +4,8 @@
  */
 
 // Qt
-import QtQuick 2.12
-import QtQuick.Controls 2.12
+import QtQuick
+import QtQuick.Controls
 import Qt5Compat.GraphicalEffects
 
 // Qaterial
