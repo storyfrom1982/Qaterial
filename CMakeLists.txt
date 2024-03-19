@@ -200,6 +200,11 @@ add_library(${QATERIAL_TARGET}::${QATERIAL_TARGET} ALIAS ${QATERIAL_TARGET})
 set_source_files_properties(
     qml/Qaterial/Style.qml
     qml/Qaterial/Colors.qml
+    qml/Qaterial/Calendar.qml
+    qml/Qaterial/DataFormat.qml
+    qml/Qaterial/DateFormat.qml
+    qml/Qaterial/DialogManager.qml
+    qml/Qaterial/SnackbarManager.qml
     PROPERTIES
     QT_QML_SINGLETON_TYPE TRUE
 )

@@ -19,8 +19,9 @@ Qaterial.Pane
 
   radius: Qaterial.Style.card.radius
 
-  property alias backgroundColor: root.palette.base
-  //property color backgroundColor: onPrimary ? Qaterial.Style.primaryColor : Qaterial.Style.cardColor
+  // fixme kly
+  // property alias backgroundColor: palette.base
+  property color backgroundColor: onPrimary ? Qaterial.Style.primaryColor : Qaterial.Style.cardColor
   property color borderColor: enabled ? Qaterial.Style.dividersColor() : Qaterial.Style.disabledDividersColor()
   property bool outlined: false
 
@@ -42,7 +43,8 @@ Qaterial.Pane
   property bool pressed: false
   property bool elevationOnHovered: false
 
-  palette.base: Qaterial.Style.colorTheme.background8
+  // fixme kly
+  // palette.base: Qaterial.Style.colorTheme.background8
 
   background: Qaterial.CardBackground
   {

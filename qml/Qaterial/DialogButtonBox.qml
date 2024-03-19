@@ -25,8 +25,9 @@ T.DialogButtonBox
   alignment: Qt.AlignRight
   buttonLayout: T.DialogButtonBox.AndroidLayout
 
-  property alias backgroundColor: root.palette.base
-  palette.base: Qaterial.Style.colorTheme.dialog
+  property alias backgroundColor: bg.color
+  // fixme kly
+  // palette.base: Qaterial.Style.colorTheme.dialog
 
   delegate: Qaterial.FlatButton {}
 
@@ -42,9 +43,10 @@ T.DialogButtonBox
 
   background: Rectangle
   {
+    id: bg
     implicitHeight: Qaterial.Style.dialog.buttonRectImplicitHeight
     radius: Qaterial.Style.dialog.radius
-    color: root.palette.base
+    color: Qaterial.Style.colorTheme.dialog
 
     Rectangle
     {
@@ -57,7 +59,7 @@ T.DialogButtonBox
       y: root.position === T.DialogButtonBox.Footer ? 0 : parent.height - height
       height: Qaterial.Style.dialog.radius
 
-      color: root.palette.base
+      color: Qaterial.Style.colorTheme.dialog
     }
   } // Rectangle
 } // DialogButtonBox

@@ -18,17 +18,18 @@ T.ApplicationWindow
   color: Qaterial.Style.backgroundColor
   property color overlayColor: Qaterial.Style.overlayColor
 
-  overlay.modal: Rectangle
-  {
-    color: _window.overlayColor
-    Behavior on opacity { NumberAnimation { duration: 150 } }
-  } // Rectangle
+  // fixme kly
+  // overlay.modal: Rectangle
+  // {
+  //   color: _window.overlayColor
+  //   Behavior on opacity { NumberAnimation { duration: 150 } }
+  // } // Rectangle
 
-  overlay.modeless: Rectangle
-  {
-    color: _window.overlayColor
-    Behavior on opacity { NumberAnimation { duration: 150 } }
-  } // Rectangle
+  // overlay.modeless: Rectangle
+  // {
+  //   color: _window.overlayColor
+  //   Behavior on opacity { NumberAnimation { duration: 150 } }
+  // } // Rectangle
 
   // Ugly trick for now : todo remove
   Material.theme: Qaterial.Style.theme

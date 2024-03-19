@@ -45,16 +45,18 @@ T.Dialog
 
   property double elevation: Qaterial.Style.dialog.elevation
   // Deprecated
-  property alias backgroundColor: root.palette.base
+  property alias backgroundColor: bg.color
   property color overlayColor: Qaterial.Style.overlayColor
   property bool drawSeparator: false
 
-  palette.base: Qaterial.Style.colorTheme.dialog
+  // fixme kly
+  // palette.base: Qaterial.Style.colorTheme.dialog
 
   background: Rectangle
   {
+    id: bg
     radius: Qaterial.Style.dialog.radius
-    color: root.palette.base
+    color: Qaterial.Style.colorTheme.dialog
 
     layer.enabled: root.elevation > 0
     layer.effect: Qaterial.ElevationEffect
@@ -93,7 +95,7 @@ T.Dialog
     background: Rectangle
     {
       radius: Qaterial.Style.dialog.radius
-      color: root.palette.base
+      color: bg.color
       //clip: true
     } // Rectangle
   } // Label
@@ -101,7 +103,8 @@ T.Dialog
   footer: Qaterial.DialogButtonBox
   {
     visible: count > 0
-    palette.base: root.palette.base
+    //fixme kly
+    backgroundColor: bg.color
   } // DialogButtonBox
 
   T.Overlay.modal: Rectangle
